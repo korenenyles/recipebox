@@ -1,0 +1,20 @@
+<h1>Recipe Box!</h1>
+
+<ul>
+    {% for recipe in data %}
+        <li>
+        {{recipe.title}} | by {{recipe.author.name}} | Created on {{recipe.date}}
+            <ul>
+                <li>
+                {{recipe.description}}
+                </li>
+                <li>
+                {{recipe.time_required}}
+                </li>
+                <li>
+                {{recipe.instructions}}
+                </li>
+            </ul>
+        </li>
+    {% endfor %}
+</ul>
