@@ -17,8 +17,15 @@ from django.contrib import admin
 from django.urls import path
 
 from recipe.urls import urlpatterns as recipe_urls
+from recipe import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, ),
+    path('home/', views.index, name='home_url'),
+    path('author/', views.author, name = 'author_url'),
+    path('recipe/', views.recipe, name = 'recipe_url'),
+    
+    
+    
 ]
 urlpatterns += recipe_urls

@@ -1,0 +1,14 @@
+<h1>RECIPEBOX!</h1>
+<h2>Authors:</h2>
+
+<ul>
+    {% for recipe in data %}
+        <h3>Author:</h3>
+        {{recipe.author.name}}
+        
+        <h3>Bio:</h3>
+        {{recipe.author.bio}}
+        
+    {% endfor %}
+</ul>
+<a href="{% url 'home_url' %}"> <h2>Home</h2></a>

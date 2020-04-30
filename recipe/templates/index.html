@@ -1,20 +1,9 @@
-<h1>Recipe Box!</h1>
-
+<h1>RECIPEBOX!</h1>
+<h2>Our Recipes:</h2>
 <ul>
     {% for recipe in data %}
         <li>
-        {{recipe.title}} | by {{recipe.author.name}} | Created on {{recipe.date}}
-            <ul>
-                <li>
-                {{recipe.description}}
-                </li>
-                <li>
-                {{recipe.time_required}}
-                </li>
-                <li>
-                {{recipe.instructions}}
-                </li>
-            </ul>
+        <h2><a href="{% url 'recipe_url' %}">{{recipe.title}} </a></h2>
         </li>
     {% endfor %}
 </ul>
