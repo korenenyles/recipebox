@@ -1,10 +1,10 @@
 <h1>RECIPEBOX!</h1>
 <h2> Recipe:</h2>
 
-{% for recipe in data %}
+
     <h2>{{recipe.title}} </h2>
     
-    <h3><a href="{% url 'author_url' %}">{{recipe.author.name}}</a> | Time to make: {{recipe.time_required}}</h3>
+    <h3> Author: <a href= {%url 'author_url' id=recipe.author.id%}>{{recipe.author.name}}</a>| Time to make: {{recipe.time_required}}</h3>
     Created on {{recipe.date}}
             <ul>
                 
@@ -17,6 +17,5 @@
                 {{recipe.instructions}}
                 
             </ul>
-        
-{% endfor %}
+
 <a href="{% url 'home_url' %}"> <h2>Home</h2></a>
