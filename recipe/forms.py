@@ -18,13 +18,17 @@ class Recipe(models.Model):
 """
     
 
-class AddAuthorForm(forms.Form):
-    name = forms.CharField(max_length=50)
-    bio = forms.CharField(widget= forms.Textarea)
+class AddAuthorForm(forms.ModelForm):
+    class Meta:
+        model = Author
+        fields=['name','bio']
+        #name = forms.CharField(max_length=50)
+        #bio = forms.CharField(widget= forms.Textarea)
 
 class AddRecipeForm(forms.Form):
     title = forms.CharField(max_length=30)
     author = forms.ModelChoiceField(queryset=Author.objects.all())
     time_required = forms.CharField(max_length=50)
     description = forms.CharField(widget = forms.Textarea)
-    instructions = forms.Charfield(widget = forms.Textarea)
+    instructions = forms.CharField(widget = forms.Textarea)
+

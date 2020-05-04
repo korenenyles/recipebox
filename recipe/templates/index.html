@@ -1,5 +1,6 @@
 <h1>RECIPEBOX!</h1>
 <h2>Our Recipes:</h2>
+<a href = "{% url 'add_author'%}">Add Author!</a> | <a href = "{% url 'add_recipe'%}">Add Recipe!</a>
 <ul>
     {% for recipe in data %}
         <li>

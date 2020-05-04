@@ -22,7 +22,8 @@ from recipe import views
 urlpatterns = [
     
     path('', views.index),
-    #path('admin/', admin.site.urls),
+    path('addauthor/', views.author_add, name = 'add_author'),
+    path('addrecipe/', views.recipe_add, name = 'add_recipe'),
     path('', views.author),
     path('', views.recipe),
    
