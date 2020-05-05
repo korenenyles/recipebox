@@ -1,19 +1,17 @@
 <h1>RECIPEBOX!</h1>
 <h2> Recipe:</h2>
 
-
-    <h2>{{recipe.title}} </h2>
+<h2>{{recipe.title}} </h2>
     
-    <h3> Author: <a href= {%url 'author_url' id=recipe.author.id%}>{{recipe.author.name}}</a>| Time to make: {{recipe.time_required}}</h3>
+<h3> Author: <a href= {%url 'author_url' id=recipe.author.id%}>{{recipe.author.name}}</a>| Time to make: {{recipe.time_required}}</h3>
     Created on {{recipe.date}}
-            <ul>
-                               
-                <h3>Description:</h3>
-                {{recipe.description}}
+    <ul>
+    <h3>Description:</h3>
+    {{recipe.description}}
                
-                <h3>Instructions:</h3>
-                {{recipe.instructions}}
+    <h3>Instructions:</h3>
+    {{recipe.instructions}}
                 
-            </ul>
+    </ul>
 
 <a href="{% url 'home_url' %}"> <h2>Home</h2></a>

@@ -2,21 +2,6 @@ from django.db import models
 from django.utils import timezone
 
 # Create your models here.Author model:
-"""
-Author Model:
-    Name (CharField) -string (50)
-    Bio (TextField) -string (text)
-
-Recipe Model:
-
-    Title (CharField) - string (30)
-    Author (ForeignKey) - or link
-    Description (TextField)
-    Time Required (Charfield) (for example, "One hour")
-    Instructions (TextField)
-
-"""
-
 class Author(models.Model):
     name = models.CharField( max_length=50)
     bio = models.TextField()
