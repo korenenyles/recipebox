@@ -9,5 +9,6 @@ urlpatterns = [
     path('recipe/<int:id>/', views.recipe, name = 'recipe_url'),
     path('addauthor/', views.author_add, name = 'add_author'),
     path('addrecipe/', views.recipe_add, name = 'add_recipe'),
+    path('login/', views.loginview)
    
 ]   

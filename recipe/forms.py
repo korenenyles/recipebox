@@ -13,4 +13,6 @@ class AddRecipeForm(forms.ModelForm):
         model = Recipe
         fields = ['title', 'author','time_required', 'description', 'instructions']
 
-
+class LoginForm(forms.Form):
+    username = forms.CharField(max_length=50)
+    password = forms.CharField(widget = forms.PasswordInput)
