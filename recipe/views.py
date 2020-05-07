@@ -43,6 +43,7 @@ def author_add(request):
     return render(request, html, {"form": form})
 
 def loginview(request):
+    html='login.html'
     if request.method == "POST":
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -55,5 +56,5 @@ def loginview(request):
                     request.GET.get('next', reverse('home_url'))
                 )
     form = LoginForm()
-    return render(request,'genericform.html', {'form': form})
+    return render(request,'login.html', {'form': form})
     
