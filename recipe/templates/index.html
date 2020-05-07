@@ -1,7 +1,13 @@
 <h1>RECIPEBOX!</h1>
 <h2>Our Recipes:</h2>
 
+
 Are you logged in? {{ request.user.is_authenticated }}
+<br>
+
+<a href ="{% url 'login_url'%}">Login Here! </a>
+<br>
+<a href="{% url 'logout_url' %}">Logout!</a>
 <br>
 
 <a href = "{% url 'add_author'%}">Add Author!</a> | <a href = "{% url 'add_recipe'%}">Add Recipe!</a>
