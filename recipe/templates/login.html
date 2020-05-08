@@ -1,3 +1,10 @@
+<html>
+<head>
+ <title>RECIPEBOX!</title>
+    {% load  static %}
+    <link rel="stylesheet" href ="{% static 'css/basic.css'%}" >
+</head>
+<body>
 <h1>Login here:</h1>
 <form action="" method="post">
     {% csrf_token %}
@@ -5,7 +12,8 @@
     <p>Don't have an accoount? Create one <a href="/register">here</a></p>
 	<button type="submit" class="btn btn-success">Login</button>	
 </form>
-
+</body>
+</html>
 
 
 	

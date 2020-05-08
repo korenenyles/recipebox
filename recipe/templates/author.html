@@ -1,5 +1,12 @@
-<h1>RECIPEBOX!</h1>
-<h2>Author:</h2>
+<html>
+<head>
+ <title>RECIPEBOX!</title>
+    {% load  static %}
+    <link rel="stylesheet" href ="{% static 'css/basic.css'%}" >
+</head>
+<body>
+    <h1>RECIPEBOX!</h1>
+    <h2>Author:</h2>
 <ul>
     <h3>Name:</h3>
     {{author.name}}
@@ -14,6 +21,9 @@
            <a href="{% url 'recipe_url' id=recipe.id%}">{{recipe.title}} |</a>
         {%endif%}
     {%endfor%}
-        
+
 </ul>
+
 <a href="{% url 'home_url' %}"> <h2>Home</h2></a>
+</body>
+</html>
