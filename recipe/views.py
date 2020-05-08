@@ -5,8 +5,6 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
-
-# Create your views here.
 def index(request):
     data = Recipe.objects.all()
     author = Author.objects.all()    
@@ -35,8 +33,8 @@ def recipe_add(request):
     #options change whether they are staff or not
     if not request.user.is_staff:
         form = NotStaffRecipeForm(request.POST)
+    #Matt Perry assisted me with extending this.     
         
-        #options = Recipe.objects.filter(author = request.user.author).first()
         if request.method == "POST" and form.is_valid():
             data = form.cleaned_data
             non_staff_author = Recipe.objects.create(
@@ -50,10 +48,6 @@ def recipe_add(request):
             return HttpResponseRedirect(reverse("home_url"))
         form = NotStaffRecipeForm()
     return render(request, html, {"form": form})
-
-    #if not request.user.is_staff:
-    #   Author.objects.filter()
-    #return render(request, html, {"form": form})
 
 @login_required
 def author_add(request):
@@ -75,8 +69,6 @@ def author_add(request):
         return render(request, html, {'form': form})
     return render(request, "forbidden.html")
               
-    
-
 def loginview(request):
     html='login.html'
     if request.method == "POST":
