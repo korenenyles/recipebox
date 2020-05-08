@@ -37,21 +37,20 @@ def recipe_add(request):
 def author_add(request):
     html = "authoraddform.html"
     form = AddAuthorForm()
-    
     if request.method == "POST":
-        form = AddAuthorForm(request.POST)
+        form = AddAuthorForm(data = request.POST)
         if form.is_valid():
             data = form.cleaned_data
+            #matt perry assisted with this portion of extending the addauthor to include user
             new_user = User.objects.create_user(
-                username=data['name']
+                username=data['name'], password=data['password']
             )
             new_author = Author.objects.create(name=data['name'],bio=data['bio'],user=new_user)
+            new_author.save()
             return HttpResponseRedirect(reverse('home_url'))    
-
+    # lets the staff access new author form
     if request.user.is_staff:
-        
         return render(request, html, {'form': form})
-
     return render(request, "forbidden.html")
               
     

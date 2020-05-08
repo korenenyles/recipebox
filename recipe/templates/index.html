@@ -5,9 +5,9 @@
 Are you logged in? {{ request.user.is_authenticated }}
 <br>
 
-<a href ="{% url 'login_url'%}">Login Here! </a>
+<a href ="{% url 'login_url'%}"><button>Login Here! </button></a>
 <br>
-<a href="{% url 'logout_url' %}">Logout!</a>
+<a href="{% url 'logout_url' %}"><button>Logout!</button></a>
 <br>
 
 <a href = "{% url 'add_author'%}">Add Author!</a> | <a href = "{% url 'add_recipe'%}">Add Recipe!</a>
