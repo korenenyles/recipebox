@@ -9,6 +9,7 @@
 
     <h3>Recipes:</h3>
     {% for recipe in data %}
+        
         {% if recipe.author == author%}
            <a href="{% url 'recipe_url' id=recipe.id%}">{{recipe.title}} |</a>
         {%endif%}

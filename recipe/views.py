@@ -1,6 +1,6 @@
 from django.shortcuts import render, reverse, HttpResponseRedirect
 from recipe.models import Recipe, Author
-from recipe.forms import AddRecipeForm, AddAuthorForm, LoginForm
+from recipe.forms import AddRecipeForm, AddAuthorForm, LoginForm, NotStaffRecipeForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -26,19 +26,41 @@ def recipe(request, id):
 def recipe_add(request):
     html = "recipeaddform.html"
     form = AddRecipeForm()
-    if request.method == "POST":
-        form = AddRecipeForm(request.POST)
-        form.save()
-        return HttpResponseRedirect(reverse("home_url"))
-
+    if request.user.is_staff:
+        if request.method == "POST":
+            form = AddRecipeForm(request.POST)
+            form.save()
+            return HttpResponseRedirect(reverse("home_url"))
+    
+    #options change whether they are staff or not
+    if not request.user.is_staff:
+        form = NotStaffRecipeForm(request.POST)
+        
+        #options = Recipe.objects.filter(author = request.user.author).first()
+        if request.method == "POST" and form.is_valid():
+            data = form.cleaned_data
+            non_staff_author = Recipe.objects.create(
+                title=data['title'], 
+                author=request.user.author,
+                time_required=data['time_required'], 
+                description=data['description'], 
+                instructions=data['instructions'] 
+                )
+            
+            return HttpResponseRedirect(reverse("home_url"))
+        form = NotStaffRecipeForm()
     return render(request, html, {"form": form})
+
+    #if not request.user.is_staff:
+    #   Author.objects.filter()
+    #return render(request, html, {"form": form})
 
 @login_required
 def author_add(request):
     html = "authoraddform.html"
     form = AddAuthorForm()
     if request.method == "POST":
-        form = AddAuthorForm(data = request.POST)
+        form = AddAuthorForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
             #matt perry assisted with this portion of extending the addauthor to include user
