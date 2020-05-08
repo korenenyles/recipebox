@@ -5,9 +5,10 @@
     <link rel="stylesheet" href ="{% static 'css/basic.css'%}" >
 </head>
 <body>
-<h1>RECIPEBOX!</h1>
+<h1>RECIPEBOX</h1>
 <h2> Recipe:</h2>
-
+<div>
+<div class="recipe-card">
 <h2>{{recipe.title}} </h2>
     
 <h3> Author: <a href= {%url 'author_url' id=recipe.author.id%}>{{recipe.author.name}}</a>| Time to make: {{recipe.time_required}}</h3>
@@ -20,7 +21,8 @@
     {{recipe.instructions}}
                 
     </ul>
-
-<a href="{% url 'home_url' %}"> <h2>Home</h2></a>
+</div>
+</div>
+<a href="{% url 'home_url' %}"> <button>Home</button></a>
 </body>
 </html>

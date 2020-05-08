@@ -1,6 +1,6 @@
 <html>
 <head>
- <title>RECIPEBOX!</title>
+ <title>RECIPEBOX</title>
     {% load  static %}
     <link rel="stylesheet" href ="{% static 'css/basic.css'%}" >
 </head>
@@ -10,8 +10,9 @@
     {% csrf_token %}
     {{form.as_p}}
     <p>Don't have an accoount? Create one <a href="/register">here</a></p>
-	<button type="submit" class="btn btn-success">Login</button>	
+	<button>Login</button>	
 </form>
+<a href="{% url 'home_url' %}"> <button>Home</button></a>
 </body>
 </html>
 

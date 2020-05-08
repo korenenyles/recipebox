@@ -1,15 +1,17 @@
 <html>
 <head>
- <title>RECIPEBOX!</title>
+ <title>RECIPEBOX</title>
     {% load  static %}
     <link rel="stylesheet" href ="{% static 'css/basic.css'%}" >
 </head>
 <body>
-<h1>Add Author Info Here:</h1>
+<h1>RECIPEBOX</h1>
+<h2>Add Author Info Here:</h2>
 <form action="/addauthor/" method="post">
     {% csrf_token %}
     {{form.as_p}}
-    <input type="submit" value="Submit!">
+    <input type="submit" value="Add Author">
 </form>
+<a href="{% url 'home_url' %}"> <button>Home</button></a>
 </body>
 </html>

@@ -2,33 +2,29 @@
 <html lang="en">
 
 <head>
-    <title>RECIPEBOX!</title>
+    <title>RECIPEBOX</title>
     {% load  static %}
     <link rel="stylesheet" href ="{% static 'css/basic.css'%}" >
 </head>
 <body>
-    <h1>RECIPEBOX!</h1>
+    <h1>RECIPEBOX</h1>
     <h2>Our Recipes:</h2>
 
 
     {% if user.is_authenticated %}
     <p><strong>{{user.username}}</strong> is Logged In! |
-    <a href="{% url 'logout_url' %}"><button>Logout!</button></a></p>
+    <a href="{% url 'logout_url' %}"><button>Logout</button></a></p>
     {% else %}
-    <p>You aren't logged in! <a href ="{% url 'login_url'%}"><button>Login Here! </button></a></p>
+    <p>You aren't logged in <a href ="{% url 'login_url'%}"><button>Login Here </button></a></p>
     {% endif %}
 
-
-   
-  
-
-    <a href = "{% url 'add_author'%}">Add Author!</a> | <a href = "{% url 'add_recipe'%}">Add Recipe!</a>
     
-    {% for recipe in data %}
+    <div>{% for recipe in data %}
         
         <h2><a href="{% url 'recipe_url' id=recipe.id%}">{{recipe.title}} </a></h2>
         
     {% endfor %}
-
+    </div>
+    <a href = "{% url 'add_author'%}"><button>Add Author</button></a> | <a href = "{% url 'add_recipe'%}"><button>Add Recipe</button></a>
 </body>
 </html>

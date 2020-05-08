@@ -1,6 +1,6 @@
 html{
     background-color: rgb(199, 199, 199);
-    text-align: center;
+    
 }
 h1{
     color: rgb(238, 138, 71);
@@ -12,5 +12,7 @@ h2{
 }
 
 body{
+    text-align: center;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
