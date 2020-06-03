@@ -11,7 +11,7 @@
 <div class="recipe-card">
 <h2>{{recipe.title}} </h2>
     
-<h3> Author: <a href= {%url 'author_url' id=recipe.author.id%}>{{recipe.author.name}}</a>| Time to make: {{recipe.time_required}}</h3>
+<h3> Author: <a href= {%url 'author_url' id=recipe.author.id %}>{{recipe.author.name}}</a>| Time to make: {{recipe.time_required}}</h3>
     Created on {{recipe.date}}
     <ul>
     <h3>Description:</h3>
@@ -24,5 +24,15 @@
 </div>
 </div>
 <a href="{% url 'home_url' %}"> <button>Home</button></a>
+{%if recipe.author.id == user.author.id or user.is_staff%}
+<a href="{% url 'edit_url' id=recipe.id%}"> <button>Edit</button></a>
+{%endif%}
+{% if user.is_authenticated %}
+{%if recipe not in user.author.favorite.all%}
+<a href="{% url 'favorite_url' id=recipe.id %}"> <button>Add to favoirtes</button></a>
+{%else%}
+<a href="{% url 'unfavorite_url' id=recipe.id %}"> <button>Remove from favoirtes</button></a>
+{%endif%}
+{%endif%}
 </body>
 </html>

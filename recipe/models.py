@@ -3,11 +3,12 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 class Author(models.Model):
-    
+    Recipe = 'Recipe'
     name = models.CharField(max_length=50)
     bio = models.TextField()
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    
+    favorite = models.ManyToManyField(Recipe,related_name="favorite")
+
     def __str__(self):
         return self.name
 
@@ -21,3 +22,5 @@ class Recipe(models.Model):
 
     def __str__(self):
         return self.title
+
+

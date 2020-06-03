@@ -6,11 +6,19 @@
 </head>
 <body>
 <h1>RECIPEBOX</h1>
+{%if path == 'addrecipe/'%}
 <h2>Add Recipe Here:</h2>
+{%else%}
+<h2>Edit Recipe Here:</h2>
+{%endif%}
 <form action="" method="post">
     {% csrf_token %}
     {{form.as_p}}
+    {%if path == 'addrecipe/'%}
     <input type="submit" value="Add Recipe">
+    {%else%}
+    <input type="submit" value="Edit Recipe">
+    {%endif%}
 </form>
 <a href="{% url 'home_url' %}"> <button>Home</button></a>
 </body>
